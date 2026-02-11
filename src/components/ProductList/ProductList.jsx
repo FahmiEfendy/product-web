@@ -1,15 +1,25 @@
 import axios from "axios";
 import { useEffect } from "react";
 
+import { stringFormatter } from "../../utils/string.js";
+
+import "./ProductList.scss";
 import { MdDelete, MdOutlineModeEdit } from "react-icons/md";
 
-const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, setEditId }) => {
+const ProductList = ({
+  products,
+  currentPage,
+  setCurrentPage,
+  fetchProducts,
+  setEditId,
+  isLoading,
+}) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const editProductHandler = async (id) => {
     if (!id) return;
 
-    setEditId(id)
+    setEditId(id);
   };
 
   const deleteProductHandler = async (id) => {
@@ -42,7 +52,8 @@ const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, set
     <>
       {products?.data?.length === 0 && <h3>No products found.</h3>}
 
-      {products?.data ? (
+      {/* show list if data exist and not loading */}
+      {products?.data && !isLoading ? (
         <>
           <table>
             <thead>
@@ -51,6 +62,7 @@ const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, set
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Description</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -59,16 +71,14 @@ const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, set
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.stock}</td>
-                  <td>{product.description}</td>
-                  <td>
+                  <td>{stringFormatter(product.description)}</td>
+                  <td className="btn-action-container">
                     <MdOutlineModeEdit
                       size={28}
                       color="yellow"
                       cursor={"pointer"}
                       onClick={() => editProductHandler(product.id)}
                     />
-                  </td>
-                  <td>
                     <MdDelete
                       size={28}
                       color="red"
@@ -80,11 +90,11 @@ const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, set
               ))}
             </tbody>
           </table>
-          <>
+          <div className="product-list-footer">
             <button onClick={previousPageHandler}>Previous</button>
             <button onClick={nextPageHandler}>Next</button>
             <p>{`Showing ${products.from} - ${products.to} out of ${products.total} products`}</p>
-          </>
+          </div>
         </>
       ) : (
         <p>Loading...</p>

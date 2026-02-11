@@ -68,13 +68,13 @@ const ProductForm = ({ fetchProducts, closeCreateModal, editId }) => {
         className="form-container"
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
-        <h2>{`${editId ? "Edit" : "Add"} Product`}</h2>
         <FaTimes
           size={26}
           onClick={closeCreateModal}
           cursor={"pointer"}
           className="close-btn"
         />
+        <h2>{`${editId ? "Edit" : "Add"} Product`}</h2>
         <div>
           <p className="form-label">Name</p>
           <input
@@ -124,7 +124,7 @@ const ProductForm = ({ fetchProducts, closeCreateModal, editId }) => {
         </div>
         <div>
           <p className="form-label">Description</p>
-          <input
+          <textarea
             type="text"
             name="name"
             placeholder="Input product description"

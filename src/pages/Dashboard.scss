@@ -1,0 +1,13 @@
+.btn-container {
+  display: flex;
+  justify-content: end;
+
+  .btn-sync {
+    background-color: rgba(234, 239, 44, 0.5);
+  }
+
+  .btn-create {
+    margin-left: 0.8rem;
+    background-color: rgba(9, 99, 219, 0.6);
+  }
+}

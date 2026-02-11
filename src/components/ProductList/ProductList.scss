@@ -1,0 +1,65 @@
+table {
+  margin-top: 1.5rem;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse; // remove table default border
+
+  thead {
+    th {
+      font-size: 1.1rem;
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    td {
+      text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255);
+    }
+
+    td:nth-child(1) {
+      width: 20%;
+    } // Name
+    td:nth-child(2) {
+      width: 8%;
+      text-align: center;
+    } // Price
+    td:nth-child(3) {
+      width: 8%;
+      text-align: center;
+    } // Stock
+    td:nth-child(4) {
+      width: 40%;
+    } // Description
+    td:nth-child(5) {
+      width: 10%;
+      text-align: center;
+    } // Actions
+  }
+}
+
+// action icons
+svg {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.product-list-footer {
+  margin-top: 1.5rem;
+
+  button {
+    margin: 0 0.3rem;
+  }
+}
