@@ -1,21 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { MdDelete, MdOutlineModeEdit } from "react-icons/md";
 
-const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts }) => {
+const ProductList = ({ products, currentPage, setCurrentPage, fetchProducts, setEditId }) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const editProductHandler = async (id) => {
     if (!id) return;
 
-    try {
-      await axios.patch(`${baseUrl}/product/${id}`);
-      fetchProducts();
-      console.log("Successfully edit product");
-    } catch (err) {
-      console.error(err, "<<< Failed to edit product");
-    }
+    setEditId(id)
   };
 
   const deleteProductHandler = async (id) => {

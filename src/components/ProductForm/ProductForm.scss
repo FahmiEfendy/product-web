@@ -1,0 +1,67 @@
+.form-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.form-container {
+  background: rgba(0, 0, 0);
+  width: 40%;
+  padding: 2rem;
+  border-radius: 1rem;
+  animation: fadeIn 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+
+  .close-btn {
+    margin-left: auto;
+  }
+
+  .form-label {
+    padding-bottom: 0rem;
+    text-align: left;
+  }
+
+  input {
+    width: 95%;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    border-radius: .8rem;
+    border: 1px solid #fff;
+    font-size: .9rem;
+  }
+
+  .btn-container {
+    display: flex;
+    margin-left: auto;
+    margin-top: 1.5rem;
+  }
+
+  button {
+    padding: .7rem 1.2rem;
+    border-radius: .6rem;
+    border: none;
+    cursor: pointer;
+    margin-left: .5rem;
+  }
+
+  .btn-add {
+  background-color: rgb(0, 255, 255, 0.6);
+  }
+}
+
+// animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
